@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cédric Yves Ferrouillet — Technicien de maintenance confirmé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --teal:#0d9488;
+    --teal-dark:#0f766e;
+    --orange:#f97316;
+    --amber:#f59e0b;
+    --ink:#0f172a;
+    --slate:#475569;
+    --slate-light:#64748b;
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --border:#e2e8f0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  h1,h2,h3,.brand{font-family:'Poppins',sans-serif;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{font-weight:700; font-size:18px; color:var(--ink);}
+  .brand span{color:var(--teal);}
+  .nav-links{display:flex; gap:28px; list-style:none;}
+  .nav-links a{
+    text-decoration:none; color:var(--slate); font-weight:500; font-size:14px;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--teal);}
+  .nav-cta{
+    background:var(--teal); color:#fff; padding:9px 18px; border-radius:999px;
+    text-decoration:none; font-weight:600; font-size:14px; white-space:nowrap;
+  }
+  .nav-toggle{display:none;}
+  @media (max-width:760px){
+    .nav-links{display:none;}
+  }
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,#0d9488 0%,#0f766e 55%,#134e4a 100%);
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:''; position:absolute; width:520px; height:520px; border-radius:50%;
+    background:radial-gradient(circle,rgba(249,115,22,0.35),transparent 70%);
+    top:-180px; right:-160px;
+  }
+  .hero::after{
+    content:''; position:absolute; width:360px; height:360px; border-radius:50%;
+    background:radial-gradient(circle,rgba(245,158,11,0.25),transparent 70%);
+    bottom:-140px; left:-100px;
+  }
+  .hero-inner{
+    position:relative; max-width:1080px; margin:0 auto; padding:72px 24px 64px;
+    display:flex; align-items:center; gap:48px; flex-wrap:wrap;
+  }
+  .hero-photo{
+    width:190px; height:190px; border-radius:24px; object-fit:cover;
+    border:4px solid rgba(255,255,255,0.35);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    flex-shrink:0;
+  }
+  .hero-text{flex:1; min-width:280px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.15); padding:6px 14px; border-radius:999px;
+    font-size:13px; font-weight:600; letter-spacing:.03em; margin-bottom:16px;
+  }
+  .eyebrow i{color:var(--amber);}
+  .hero h1{font-size:38px; font-weight:700; margin-bottom:8px;}
+  .hero .role{font-size:19px; font-weight:500; color:#ccfbf1; margin-bottom:18px;}
+  .hero p.tagline{max-width:640px; color:#e2f5f2; font-size:15px; margin-bottom:26px;}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:14px 26px;}
+  .hero-meta div{display:flex; align-items:center; gap:8px; font-size:14px; color:#e2f5f2;}
+  .hero-meta i{color:var(--orange); width:16px; text-align:center;}
+  .hero-buttons{margin-top:28px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px;
+    font-weight:600; font-size:14px; text-decoration:none; transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary{background:var(--orange); color:#fff; box-shadow:0 10px 24px rgba(249,115,22,0.35);}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.4);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.2);}
+
+  /* SECTIONS */
+  section{max-width:1080px; margin:0 auto; padding:72px 24px;}
+  .section-tag{
+    color:var(--orange); font-weight:700; font-size:13px; letter-spacing:.08em;
+    text-transform:uppercase; margin-bottom:10px; display:block;
+  }
+  .section-title{font-size:28px; font-weight:700; margin-bottom:16px; color:var(--ink);}
+  .section-sub{color:var(--slate); font-size:15px; max-width:680px; margin-bottom:40px;}
+
+  /* ABOUT */
+  #about{background:var(--card); border-radius:24px; margin-top:-40px; position:relative; z-index:2;
+    box-shadow:0 8px 30px rgba(15,23,42,0.06); border:1px solid var(--border);}
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:40px;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-text p{color:var(--slate); font-size:15px; margin-bottom:16px;}
+  .highlight-box{
+    background:linear-gradient(135deg,#fff7ed,#fff);
+    border:1px solid #fed7aa; border-radius:16px; padding:22px;
+  }
+  .highlight-box h3{font-size:15px; color:var(--orange); margin-bottom:8px; display:flex; gap:8px; align-items:center;}
+  .highlight-box p{font-size:14px; color:var(--slate); font-style:italic;}
+  .interest-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+  .interest-pill{
+    background:#f0fdfa; color:var(--teal-dark); border:1px solid #99f6e4;
+    padding:6px 14px; border-radius:999px; font-size:13px; font-weight:500;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+
+  /* EXPERIENCE */
+  .timeline{position:relative; padding-left:32px;}
+  .timeline::before{
+    content:''; position:absolute; left:7px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(var(--teal),var(--orange));
+  }
+  .tl-item{position:relative; margin-bottom:36px;}
+  .tl-item::before{
+    content:''; position:absolute; left:-32px; top:4px; width:16px; height:16px;
+    border-radius:50%; background:#fff; border:3px solid var(--teal);
+  }
+  .tl-item:first-child::before{background:var(--orange); border-color:var(--orange);}
+  .tl-card{
+    background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px 26px;
+    box-shadow:0 2px 10px rgba(15,23,42,0.04);
+  }
+  .tl-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .tl-title{font-size:17px; font-weight:600;}
+  .tl-date{
+    font-size:13px; font-weight:600; color:var(--teal-dark); background:#f0fdfa;
+    padding:4px 12px; border-radius:999px; white-space:nowrap;
+  }
+  .tl-company{color:var(--orange); font-weight:600; font-size:14px; margin-bottom:12px;}
+  .tl-company i{margin-right:6px;}
+  .tl-card ul{padding-left:18px; color:var(--slate); font-size:14px;}
+  .tl-card li{margin-bottom:6px;}
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+  @media (max-width:760px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-card{
+    background:var(--card); border:1px solid var(--border); border-radius:14px;
+    padding:16px 18px; display:flex; gap:14px; align-items:flex-start;
+    box-shadow:0 2px 8px rgba(15,23,42,0.03);
+  }
+  .skill-card i{
+    width:38px; height:38px; border-radius:10px; background:#f0fdfa; color:var(--teal-dark);
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;
+  }
+  .skill-card span{font-size:14px; color:var(--ink); font-weight:500;}
+
+  /* FORMATION / CERTIFICATIONS */
+  .cert-columns{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  @media (max-width:760px){.cert-columns{grid-template-columns:1fr;}}
+  .cert-group h3{
+    font-size:15px; font-weight:600; margin-bottom:14px; color:var(--ink);
+    display:flex; align-items:center; gap:8px;
+  }
+  .cert-group h3 i{color:var(--orange);}
+  .tag-cloud{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag{
+    background:var(--ink); color:#fff; padding:8px 16px; border-radius:10px;
+    font-size:13px; font-weight:500;
+  }
+  .tag.alt{background:var(--teal-dark);}
+  .caces-list{list-style:none;}
+  .caces-list li{
+    display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px dashed var(--border);
+    font-size:14px; color:var(--slate);
+  }
+  .caces-list li:last-child{border-bottom:none;}
+  .caces-list i{color:var(--teal); font-size:15px;}
+
+  /* LANGUES */
+  .lang-card{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 22px;
+    max-width:420px;
+  }
+  .lang-card .lang-name{font-weight:600; font-size:15px;}
+  .lang-card .lang-level{font-size:13px; color:var(--slate);}
+  .lang-bar{width:120px; height:8px; background:#e2e8f0; border-radius:99px; overflow:hidden;}
+  .lang-bar span{display:block; height:100%; width:52%; background:linear-gradient(90deg,var(--teal),var(--orange));}
+
+  /* CONTACT */
+  #contact{
+    background:linear-gradient(135deg,#0f172a,#1e293b); color:#fff; border-radius:24px;
+    margin-bottom:60px;
+  }
+  #contact .section-title{color:#fff;}
+  #contact .section-sub{color:#cbd5e1;}
+  .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:8px;}
+  .contact-card{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:16px;
+    padding:22px; display:flex; gap:14px; align-items:flex-start;
+  }
+  .contact-card i{
+    width:40px; height:40px; border-radius:10px; background:rgba(249,115,22,0.2); color:var(--orange);
+    display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0;
+  }
+  .contact-card .label{font-size:12px; color:#94a3b8; text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px;}
+  .contact-card .value{font-size:14px; font-weight:500; color:#fff; word-break:break-word;}
+  .contact-card a{color:#fff; text-decoration:none;}
+  .contact-cta{text-align:center; margin-top:36px;}
+
+  footer{text-align:center; padding:28px 24px; color:var(--slate-light); font-size:13px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">Cédric <span>Ferrouillet</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#experience">Expérience</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:Cedric_f@outlook.fr">Me contacter</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <img class="hero-photo" src="photo-small.jpg" alt="Photo de Cédric Yves Ferrouillet">
+    <div class="hero-text">
+      <div class="eyebrow"><i class="fa-solid fa-star"></i> 8 ans d'expérience en maintenance technique</div>
+      <h1>Cédric Yves Ferrouillet</h1>
+      <div class="role">Technicien de maintenance confirmé</div>
+      <p class="tagline">Technicien pluridisciplinaire (électricité, plomberie, CVC, GTB) évoluant vers des fonctions de responsabilité technique : conformité, sécurité incendie et coordination des prestataires. Expertise reconnue en gestion technique de piscines.</p>
+      <div class="hero-meta">
+        <div><i class="fa-solid fa-location-dot"></i> Saint-Geoire-en-Valdaine (38620)</div>
+        <div><i class="fa-solid fa-phone"></i> 06 87 69 47 96</div>
+        <div><i class="fa-solid fa-envelope"></i> Cedric_f@outlook.fr</div>
+        <div><i class="fa-solid fa-car"></i> Véhicule personnel</div>
+      </div>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="mailto:Cedric_f@outlook.fr"><i class="fa-solid fa-paper-plane"></i> Envoyer un email</a>
+        <a class="btn btn-ghost" href="tel:0687694796"><i class="fa-solid fa-phone"></i> Appeler</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <span class="section-tag">À propos</span>
+  <h2 class="section-title">Qui je suis</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Technicien de maintenance pluridisciplinaire (électricité, plomberie, CVC, GTB), avec 8 ans d'expérience en environnements exigeants — hôtellerie haut de gamme et santé. Évolution récente vers des fonctions de responsabilité technique : gestion de la conformité, sécurité incendie et coordination des prestataires.</p>
+      <p>Compétences solides en gestion technique de piscines : maîtrise du traitement de l'eau, pilotage et réglage des systèmes automatisés Bayrol et Swan, suivi des paramètres (pH, désinfection, équilibre chimique) — gestion de 11 bassins en autonomie.</p>
+      <div class="interest-list">
+        <span class="interest-pill"><i class="fa-solid fa-table-tennis-paddle-ball"></i> Tennis</span>
+        <span class="interest-pill"><i class="fa-solid fa-laptop-code"></i> Création d'application no-code</span>
+        <span class="interest-pill"><i class="fa-solid fa-hammer"></i> Bricolage</span>
+        <span class="interest-pill"><i class="fa-solid fa-person-hiking"></i> Randonnée</span>
+        <span class="interest-pill"><i class="fa-solid fa-dumbbell"></i> Fitness</span>
+        <span class="interest-pill"><i class="fa-solid fa-book"></i> Lecture</span>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <h3><i class="fa-solid fa-bolt"></i> Point fort</h3>
+      <p>"Capable d'intervenir en direct sur les pannes critiques, tout en structurant la maintenance, la sécurité incendie et la coordination des prestataires pour garantir la continuité de service."</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <span class="section-tag">Parcours</span>
+  <h2 class="section-title">Expériences professionnelles</h2>
+  <p class="section-sub">Trois postes en environnements exigeants, entre hôtellerie de luxe et établissement de santé.</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-head">
+          <span class="tl-title">Technicien de maintenance</span>
+          <span class="tl-date">Depuis 04/05/2026</span>
+        </div>
+        <div class="tl-company"><i class="fa-solid fa-building"></i>Oui-Sénior — Voiron</div>
+        <ul>
+          <li>Maintenance préventive et curative polyvalente des installations (électricité, plomberie, CVC)</li>
+          <li>Diagnostic de pannes et interventions techniques dans les logements et parties communes</li>
+          <li>Application des normes de sécurité et suivi des interventions de maintenance</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-head">
+          <span class="tl-title">Technicien de maintenance confirmé</span>
+          <span class="tl-date">07/2024 – 05/2026</span>
+        </div>
+        <div class="tl-company"><i class="fa-solid fa-building"></i>Evian Resort — Évian-les-Bains</div>
+        <ul>
+          <li>Maintenance préventive et curative en totale autonomie (électricité, plomberie, CVC, équipements hôteliers)</li>
+          <li>Diagnostic et résolution des pannes complexes, interventions prioritaires en chambres et parties communes</li>
+          <li>Application et contrôle des normes de sécurité et réglementaires, coordination avec les prestataires</li>
+          <li>Gestion technique de 11 bassins : traitement de l'eau, systèmes Bayrol et Swan</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-head">
+          <span class="tl-title">Responsable Technique</span>
+          <span class="tl-date">10/2023 – 06/2024</span>
+        </div>
+        <div class="tl-company"><i class="fa-solid fa-building"></i>Clinique Estela — Toulouse</div>
+        <ul>
+          <li>Garant du respect des normes de sécurité et réglementaires (sécurité incendie, conformité, continuité de service)</li>
+          <li>Organisation et suivi des interventions internes et des prestataires externes</li>
+          <li>Gestion et supervision de la maintenance technique des installations</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-head">
+          <span class="tl-title">Technicien de maintenance</span>
+          <span class="tl-date">10/2021 – 10/2023</span>
+        </div>
+        <div class="tl-company"><i class="fa-solid fa-building"></i>Club Med — Val d'Isère</div>
+        <ul>
+          <li>Interventions techniques dans les chambres et les parties communes</li>
+          <li>Maintenance préventive et curative des installations de l'hôtel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <span class="section-tag">Savoir-faire</span>
+  <h2 class="section-title">Compétences</h2>
+  <div class="skills-grid">
+    <div class="skill-card"><i class="fa-solid fa-screwdriver-wrench"></i><span>Maintenance curative bâtiment et piscine (diagnostic, réparation, remplacement)</span></div>
+    <div class="skill-card"><i class="fa-solid fa-water-ladder"></i><span>Maintenance préventive du matériel technique de piscines (contrôles, anticipation des pannes)</span></div>
+    <div class="skill-card"><i class="fa-solid fa-sliders"></i><span>Pilotage et réglage des systèmes Bayrol et Swan</span></div>
+    <div class="skill-card"><i class="fa-solid fa-flask"></i><span>Traitement de l'eau (chlore, pH, TAC, stabilisant)</span></div>
+    <div class="skill-card"><i class="fa-solid fa-magnifying-glass"></i><span>Diagnostic de pannes</span></div>
+    <div class="skill-card"><i class="fa-solid fa-handshake"></i><span>Coordination avec prestataires</span></div>
+    <div class="skill-card"><i class="fa-solid fa-shield-halved"></i><span>Respect des normes de sécurité</span></div>
+    <div class="skill-card"><i class="fa-solid fa-calendar-check"></i><span>Planification de maintenance &amp; supervision technique</span></div>
+  </div>
+</section>
+
+<section id="formation">
+  <span class="section-tag">Qualifications</span>
+  <h2 class="section-title">Formation &amp; certifications</h2>
+  <div class="cert-columns">
+    <div class="cert-group">
+      <h3><i class="fa-solid fa-id-card"></i> Habilitations CACES</h3>
+      <ul class="caces-list">
+        <li><i class="fa-solid fa-circle-check"></i> CACES R489-5 (R389-5)</li>
+        <li><i class="fa-solid fa-circle-check"></i> CACES R489-3 (R389-3)</li>
+        <li><i class="fa-solid fa-circle-check"></i> CACES R483-1B (R383-1B)</li>
+        <li><i class="fa-solid fa-circle-check"></i> CACES R483-1A (R383-1A)</li>
+      </ul>
+    </div>
+    <div class="cert-group">
+      <h3><i class="fa-solid fa-wrench"></i> Maîtrise technique</h3>
+      <div class="tag-cloud">
+        <span class="tag">SSIAP</span>
+        <span class="tag alt">Plomberie / Sanitaire</span>
+        <span class="tag">CVC</span>
+        <span class="tag alt">Lutte contre la légionellose</span>
+        <span class="tag">Menuiserie</span>
+        <span class="tag alt">Peinture</span>
+        <span class="tag">ECS</span>
+        <span class="tag alt">Électricité</span>
+        <span class="tag">GTB</span>
+        <span class="tag alt">Gestion piscines &amp; jacuzzis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="langues">
+  <span class="section-tag">Langues</span>
+  <h2 class="section-title">Langues parlées</h2>
+  <div class="lang-card">
+    <div>
+      <div class="lang-name">Anglais</div>
+      <div class="lang-level">B1 — Vocabulaire du quotidien</div>
+    </div>
+    <div class="lang-bar"><span></span></div>
+  </div>
+</section>
+
+<section id="contact">
+  <span class="section-tag">Contact</span>
+  <h2 class="section-title">Parlons de votre projet</h2>
+  <p class="section-sub">Disponible pour un nouveau poste en maintenance technique polyvalente. N'hésitez pas à me contacter.</p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <i class="fa-solid fa-envelope"></i>
+      <div><div class="label">Email</div><div class="value"><a href="mailto:Cedric_f@outlook.fr">Cedric_f@outlook.fr</a></div></div>
+    </div>
+    <div class="contact-card">
+      <i class="fa-solid fa-phone"></i>
+      <div><div class="label">Téléphone</div><div class="value"><a href="tel:0687694796">06 87 69 47 96</a></div></div>
+    </div>
+    <div class="contact-card">
+      <i class="fa-solid fa-location-dot"></i>
+      <div><div class="label">Adresse</div><div class="value">1050 Route Des Mille Martyrs, Saint-Geoire-en-Valdaine (38620)</div></div>
+    </div>
+    <div class="contact-card">
+      <i class="fa-solid fa-flag"></i>
+      <div><div class="label">Nationalité</div><div class="value">Française</div></div>
+    </div>
+  </div>
+  <div class="contact-cta">
+    <a class="btn btn-primary" href="mailto:Cedric_f@outlook.fr"><i class="fa-solid fa-paper-plane"></i> M'envoyer un message</a>
+  </div>
+</section>
+
+<footer>© 2026 Cédric Yves Ferrouillet — Technicien de maintenance confirmé</footer>
+
+</body>
+</html>
